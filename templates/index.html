@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-type" content="application/json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Bank Management System</title>
+</head>
+<body class="bg-white m-0 p-0 transition duration-700">
+    <h1 class=" font-semibold text-white text-center text-3xl bg-green-200 m-10 py-2 px-0 rounded-md shadow-lg">Bank Management System</h1>
+    <nav class="flex justify-center">
+        <div class="w-[70vw] gap-4 bg-green-100 p-1 mx-20 rounded-lg flex justify-between shadow-md shadow-green-50">
+        <a href="#openacc" class=" font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900 active">Open Account</a>
+        <a href="#deposit" class="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Deposit</a>
+        <a href="#withdraw" class=" font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Withdraw</a>
+        <a href="#balance" class=" font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Check Balance</a>
+        <a href="#customerdata" class=" font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Customer Data</a>
+        <a href="#closeacc" class="tra font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Close Account</a>
+        </div>
+    </nav>
+    <table id="resultArea" class="my-20 mx-auto p-2 bg-green-100 rounded-md border-separate border-slate-400 border-1" rules="all">
+        <thead class="">
+            <tr class="flex justify-start gap-x-10 font-medium p-5">
+              <td class="border border-slate-400 border-1">Name</td>
+              <td class="border border-slate-400 border-1">Account No</td>
+              <td class="border border-slate-400 border-1">DOB</td>
+              <td class="border border-slate-400 border-1">Address</td>
+              <td class="border border-slate-400 border-1">Phone</td>
+              <td class="border border-slate-400 border-1">Balance</td>
+            </tr>              
+          </thead>
+          <tbody class="block"></tbody>
+    </table>
+
+    <div id="myTabContent" class="">
+        <div id="openacc" class="flex justify-center">
+            <form action="http://127.0.0.1:5500/openAC" class="mb-48 mt-14  w-[60vh] bg-green-200 p-5 rounded-lg shadow-lg post-form">
+                <h1 class=" text-center text-lg font-medium ">Open Account</h1>
+                <hr class="border-black">
+                <br>
+                <input type="text" name="name" placeholder="Name" class="inline my-2 p-1 border hover:border-black rounded-md">
+                <input name="acn" type="text" placeholder="Account Number" class="my-2 p-1 border hover:border-black rounded-md">               
+                <input name="address" type="text" placeholder="Address" class="my-2 p-1 border hover:border-black rounded-md">
+                <input name="phone" type="tel" placeholder="Phone" class="my-2 p-1 border hover:border-black rounded-md">
+                <input name="balance" type="text" placeholder="Opening balance" class="my-2 p-1 border hover:border-black rounded-md">
+                <input name="dob" type="date" placeholder="Date of Birth" class="my-2 p-1 border hover:border-black rounded-md">
+                <br>
+                <button type="submit" class=" bg-white m-2 py-1 px-3 hover:bg-red-400 rounded-md transition delay-150 shadow-md hover:shadow-red-300">Submit</button>
+            </form>
+        </div>
+        <div id="deposit" class="flex justify-center">
+            <form action="http://127.0.0.1:5500/deposit" class=" transition duration-700 m-48 w-[60vh] bg-green-200 p-5 rounded-lg shadow-lg post-form">
+                <h1 class=" text-center text-lg font-medium ">Deposit</h1>
+                <hr class="border-black">
+                <br>
+                <input type="text" name="acn" placeholder="Account Number" class="my-2 p-1 rounded-md border hover:border-black">
+                <input type="number" name="amount" placeholder="Amount" class="my-2 p-1 rounded-md border hover:border-black">
+                <button type="submit" class=" bg-white my-2 py-1 px-3 hover:bg-red-400 rounded-md transition delay-150 shadow-md hover:shadow-red-300">submit</button>
+            </form>
+        </div>
+        <div id="withdraw" class="flex justify-center">
+            <form action="http://127.0.0.1:5500/withdraw" class="w-[60vh] bg-green-200 m-48 p-5 rounded-lg shadow-lg post-form">
+                <h1 class=" text-center text-lg font-medium ">Withdraw</h1>
+                <hr class="border-1 border-black">
+                <br>
+                <input type="text" name="acn" placeholder="Account Number" class="my-2 p-1 rounded-md border hover:border-black">
+                <input type="number" name="amount" placeholder="Amount" class="my-2 p-1 rounded-md border hover:border-black">
+                <button type="submit"  class=" bg-white my-2 py-1 px-3 hover:bg-red-400 rounded-md transition delay-150 shadow-md hover:shadow-red-300" >Submit</button>
+            </form>
+        </div>
+        <div id="balance" class="flex justify-center">
+            <form action="http://127.0.0.1:5500/checkbal" class="w-[60vh] bg-green-200 m-52 p-5 rounded-lg shadow-lg get-form">
+                <h1 class=" text-center text-lg font-medium ">Balance</h1>
+                <hr class="border-1 border-black">
+                <br>
+                <input type="text" name="acn" placeholder="Account Number" class="my-2 p-1 ml-12 rounded-md border hover:border-black">
+                <button type="submit"  class=" bg-white my-2 py-1 px-3 hover:bg-red-400 rounded-md transition delay-150 shadow-md hover:shadow-red-300" >Submit</button>
+            </form>
+        </div>
+        <div id="customerdata" class="flex justify-evenly">
+            <form action="http://127.0.0.1:5500/getcustomer" class="w-[60vh] bg-green-200 p-5 m-48 rounded-lg shadow-lg get-form">
+                <h1 class=" text-center text-lg font-medium ">Customer Details</h1>
+                <hr class="border-1 border-black">
+                <br>
+                <input type="text" name="acn" placeholder="Account Number" class="my-2 ml-12 p-1 rounded-md border hover:border-black">
+                <button type="submit"  class=" bg-white py-1 px-3 hover:bg-red-400 rounded-md transition delay-150 shadow-md hover:shadow-red-300" >Submit</button>
+            </form>
+        </div>
+        <div id="closeacc" class="flex justify-center">
+            <form action="http://127.0.0.1:5500/closeAC" class="w-[60vh] bg-green-200 p-5 m-52 rounded-lg shadow-lg get-form">
+                <h1 class="text-center text-lg font-medium ">Close Account</h1>
+                <hr class=" border-black">
+                <br>
+                <input type="text" name="acn" placeholder="Account Number" class="my-2 ml-12 p-1 rounded-md border hover:border-black">
+                <button type="submit"  class=" bg-white m-2 py-1 px-3 hover:bg-red-400 rounded-md transition delay-150 shadow-md hover:shadow-red-300" >Submit</button>
+            </form>
+        </div>
+    </div>
+     
+   
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        const postFormCollection = document.getElementsByClassName("post-form")
+        Array.from(postFormCollection).forEach(form => {
+            form.addEventListener("submit", handlePostFormSubmit)
+        })
+        async function postFormDataAsJson({ url, formData }) {
+            const plainFormData = Object.fromEntries(formData.entries());
+            const formDataJsonString = JSON.stringify(plainFormData);
+            const fetchOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: formDataJsonString,
+            };
+            const response = await fetch(url, fetchOptions);
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(errorMessage);
+            }
+            return response.json();
+        }
+        async function handlePostFormSubmit(event) {
+            event.preventDefault()
+            const form = event.currentTarget;
+            const url = form.action;
+            const formData = new FormData(form);
+            try {
+                const responseData = await postFormDataAsJson({ url, formData });
+                if (responseData === "success") {
+                    alert("Action successful!")
+                    form.reset()
+                }
+            } catch (error) {
+                alert("An error occured!")
+                console.error(error);
+            }
+        }
+    </script>
+    <script>
+        const getFormCollection = document.getElementsByClassName("get-form")
+        Array.from(getFormCollection).forEach(form => {
+            form.addEventListener("submit", handleGetFormSubmit)
+        })
+        const resultArea = document.getElementById("resultArea")
+        async function handleGetFormSubmit(event) {
+            event.preventDefault()
+            const form = event.currentTarget;
+            const url = form.action;
+            const formData = new FormData(form);
+            try {
+                const plainFormData = Object.fromEntries(formData.entries());
+                fetch(url + '?' + new URLSearchParams(plainFormData)).then((response) =>
+                    response.json()).then((responseJSON) => {
+                        formatResultData(responseJSON)
+                    })
+            } catch (error) {
+                alert("An error occured!")
+                console.error(error);
+            }
+        }
+        function formatResultData(data) {
+            const resultArea = document.getElementById("resultArea")
+            var row = $('<tr class="flex justify-start gap-x-10 font-medium p-5"/>')
+            data[0].forEach(el => {
+                row.append($('<td class="border border-slate-400 border-1"/>').html(el))
+            })
+
+            resultArea.getElementsByTagName("tbody")[0].innerHTML = '';
+            resultArea.getElementsByTagName("tbody")[0].append(row[0]);
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
